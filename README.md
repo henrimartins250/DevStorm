@@ -21,18 +21,20 @@
    ```bash
    git config --global user.name "Seu Nome"
    git config --global user.email "seu@email.com"
+
+ ´´´
 Clone o repositório:
 
-'''bash
+ ```bash
 git clone https://github.com/[usuário]/[repositório].git
-'''
+```
 ✅ Boas Práticas para o Time
 1. Trabalhe em Branches Separadas
 SEMPRE crie uma nova branch para suas tarefas:
 
-'''bash
+````bash
 git checkout -b feature/nome-da-sua-feature
-'''
+````
 Exemplo: feature/header-responsivo, fix/botao-login
 
 3. Commits Claros
@@ -44,12 +46,12 @@ git commit -m "Adiciona menu responsivo para mobile"
 3. Atualize sua Branch Frequentemente
 Antes de começar a trabalhar, puxe as mudanças da main:
 
-bash
+````bash
 git checkout main
 git pull origin main
 git checkout sua-branch
 git merge main
-'''
+````
 4. Pull Requests (PRs)
 Sempre crie um PR para mesclar sua branch na main.
 
@@ -84,7 +86,7 @@ project/
     ├── fonts/          # Fontes customizadas
     └── scripts/        # JavaScript (se necessário)
 
-'''
+````
 Separação de responsabilidades:
 
 CSS em arquivos separados (ex: forms.css, header.css).

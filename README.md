@@ -23,17 +23,19 @@
    git config --global user.email "seu@email.com"
 Clone o repositório:
 
-bash
+'''bash
 git clone https://github.com/[usuário]/[repositório].git
+'''
 ✅ Boas Práticas para o Time
 1. Trabalhe em Branches Separadas
 SEMPRE crie uma nova branch para suas tarefas:
 
-bash
+'''bash
 git checkout -b feature/nome-da-sua-feature
+'''
 Exemplo: feature/header-responsivo, fix/botao-login
 
-2. Commits Claros
+3. Commits Claros
 Mensagens objetivas no imperativo:
 
 git commit -m "Adiciona menu responsivo para mobile"
@@ -47,6 +49,7 @@ git checkout main
 git pull origin main
 git checkout sua-branch
 git merge main
+'''
 4. Pull Requests (PRs)
 Sempre crie um PR para mesclar sua branch na main.
 
@@ -67,16 +70,21 @@ Escolha quais alterações manter (converse com o time se necessário).
 
 Commit as correções.
 
-🖥️ Dicas Específicas para HTML/CSS
-Organização de Arquivos
+### 📂 Organização de Arquivos
+```bash
 project/
 ├── index.html
 ├── styles/
-│   ├── main.css
-│   └── responsive.css
+│   ├── main.css        # Estilos globais
+│   ├── header.css      # Estilos específicos do cabeçalho
+│   ├── forms.css       # Estilos de formulários
+│   └── responsive.css  # Media queries
 └── assets/
-    ├── images/
-    └── fonts/
+    ├── images/         # Todas as imagens
+    ├── fonts/          # Fontes customizadas
+    └── scripts/        # JavaScript (se necessário)
+
+'''
 Separação de responsabilidades:
 
 CSS em arquivos separados (ex: forms.css, header.css).

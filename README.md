@@ -1,7 +1,7 @@
 # DevStorm
 # Guia Colaborativo para GitHub - [Nome do Projeto]
 
-👋 Bem-vindos ao projeto! Como estamos trabalhando em equipe e usando GitHub, este guia traz **boas práticas** e **dicas básicas** para evitar conflitos e manter a organização.
+#👋 Bem-vindos ao projeto! Como estamos trabalhando em equipe e usando GitHub, este guia traz **boas práticas** e **dicas básicas** para evitar conflitos e manter a organização.
 
 ---
 
@@ -28,8 +28,8 @@ Clone o repositório:
  ```bash
 git clone https://github.com/[usuário]/[repositório].git
 ```
-✅ Boas Práticas para o Time
-1. Trabalhe em Branches Separadas
+## ✅ Boas Práticas para o Time
+### 1. Trabalhe em Branches Separadas
 SEMPRE crie uma nova branch para suas tarefas:
 
 ````bash
@@ -37,13 +37,13 @@ git checkout -b feature/nome-da-sua-feature
 ````
 Exemplo: feature/header-responsivo, fix/botao-login
 
-3. Commits Claros
+### 3. Commits Claros
 Mensagens objetivas no imperativo:
 
 git commit -m "Adiciona menu responsivo para mobile"
 ❌ Evite: "Alterações" ou "Update".
 
-3. Atualize sua Branch Frequentemente
+### 4. Atualize sua Branch Frequentemente
 Antes de começar a trabalhar, puxe as mudanças da main:
 
 ````bash
@@ -52,7 +52,7 @@ git pull origin main
 git checkout sua-branch
 git merge main
 ````
-4. Pull Requests (PRs)
+### 5. Pull Requests (PRs)
 Sempre crie um PR para mesclar sua branch na main.
 
 Descreva no PR:
@@ -63,7 +63,7 @@ Screenshots (se for HTML/CSS)
 
 Peça revisão a 2 colegas antes de mergear.
 
-5. Resolvendo Conflitos
+### 6. Resolvendo Conflitos
 Se houver conflitos ao mesclar:
 
 Abra os arquivos marcados.
@@ -72,7 +72,9 @@ Escolha quais alterações manter (converse com o time se necessário).
 
 Commit as correções.
 
-### 📂 Organização de Arquivos
+---
+
+## 📂 Organização de Arquivos
 ```bash
 project/
 ├── index.html
@@ -87,7 +89,9 @@ project/
     └── scripts/        # JavaScript (se necessário)
 
 ````
-Separação de responsabilidades:
+---
+
+## Separação de responsabilidades:
 
 CSS em arquivos separados (ex: forms.css, header.css).
 
@@ -98,7 +102,9 @@ Estilos inline no HTML.
 
 Sobrescrever estilos de colegas sem comunicação.
 
-⚡ Fluxo de Trabalho Sugerido
+---
+
+### ⚡ Fluxo de Trabalho Sugerido
 git pull origin main (sincronize antes de começar)
 
 Crie sua branch → trabalhe nos arquivos.
@@ -111,7 +117,9 @@ Abra um PR no GitHub e marque revisores.
 
 Após aprovação, delete a branch mesclada.
 
-❌ Erros Comuns a Evitar
+---
+
+## ❌ Erros Comuns a Evitar
 Commitar arquivos desnecessários (node_modules, .DS_Store).
 
 Trabalhar diretamente na branch main.
@@ -120,14 +128,18 @@ Ignorar conflitos no Git (resolva sempre!).
 
 Commits gigantes (ex: "Update geral" com 20 arquivos).
 
-🔗 Recursos Úteis
+---
+
+## 🔗 Recursos Úteis
 GitHub Guides
 
 Git Simulator (prática visual)
 
 HTML/CSS Best Practices
 
-✨ Lembre-se: Comunicação é chave! Combinem padrões de código e usem issues/PRs para discutir mudanças. Vamos juntos! ✨
+---
+
+## ✨ Lembre-se: Comunicação é chave! Combinem padrões de código e usem issues/PRs para discutir mudanças. Vamos juntos! ✨
 
 
 ### Como usar:

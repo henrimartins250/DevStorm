@@ -37,13 +37,13 @@ git checkout -b feature/nome-da-sua-feature
 ````
 Exemplo: feature/header-responsivo, fix/botao-login
 
-### 3. Commits Claros
+### 2. Commits Claros
 Mensagens objetivas no imperativo:
 
 git commit -m "Adiciona menu responsivo para mobile"
 ❌ Evite: "Alterações" ou "Update".
 
-### 4. Atualize sua Branch Frequentemente
+### 3. Atualize sua Branch Frequentemente
 Antes de começar a trabalhar, puxe as mudanças da main:
 
 ````bash
@@ -52,7 +52,7 @@ git pull origin main
 git checkout sua-branch
 git merge main
 ````
-### 5. Pull Requests (PRs)
+### 4. Pull Requests (PRs)
 Sempre crie um PR para mesclar sua branch na main.
 
 Descreva no PR:
@@ -63,7 +63,7 @@ Screenshots (se for HTML/CSS)
 
 Peça revisão a 2 colegas antes de mergear.
 
-### 6. Resolvendo Conflitos
+### 5. Resolvendo Conflitos
 Se houver conflitos ao mesclar:
 
 Abra os arquivos marcados.

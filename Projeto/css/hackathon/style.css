@@ -1,0 +1,64 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0fdf4;
+    color: #1a1a1a;
+  }
+  
+  header {
+    background: #2e7d32;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav a {
+    color: white;
+    margin-left: 1rem;
+    text-decoration: none;
+  }
+  
+  .hero {
+    text-align: center;
+    color: white;
+    padding: 4rem 2rem;
+    background-image:url(imagens/foia.avif);
+    background-size: cover, contain;
+    background-repeat: no-repeat, repeat;
+    background-position: center, top right;
+  }
+  
+  .cta {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: #388e3c;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+  }
+  .navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .beneficios {
+    padding: 2rem;
+    color: white;
+    background-color: #506b49;
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: #2e7d32;
+    color: white;
+  }
+  

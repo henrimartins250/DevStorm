@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoGestão - Histórico de Análises</title>
+  <style>
+    body { font-family: Arial, sans-serif; background-color: #f4f6f5; margin: 0; padding: 0; }
+    header, footer { background-color: #2e7d32; color: white; padding: 1rem; text-align: center; }
+    main { max-width: 1200px; margin: auto; padding: 2rem; background: white; }
+    h1, h2 { color: #2e7d32; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 0.75rem; text-align: center; }
+    th { background-color: #c8e6c9; }
+    tr:nth-child(even) { background-color: #f1f8e9; }
+    .botao { margin-top: 1rem; background: #388e3c; color: white; padding: 0.75rem; border: none; cursor: pointer; border-radius: 5px; margin-right: 1rem; }
+    .filtros { margin-bottom: 1rem; }
+    .filtros label, .filtros input { margin-right: 1rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EcoGestão</h1>
+    <p>Histórico de Análises Semanais e Mensais</p>
+  </header>
+
+  <main>
+    <h2>Resumo de Dados</h2>
+
+    <div class="filtros">
+      <label for="filtroData">Filtrar por data:</label>
+      <input type="month" id="filtroData">
+      <button class="botao" onclick="filtrarDados()">Filtrar</button>
+      <button class="botao" onclick="exportarCSV()">Exportar CSV</button>
+    </div>
+
+    <table id="tabela-dados">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Entrada (R$)</th>
+          <th>Despesas (R$)</th>
+          <th>Lucro (R$)</th>
+          <th>Desperdício (%)</th>
+          <th>Água (m³)</th>
+          <th>Energia (kWh)</th>
+          <th>Resíduos (kg)</th>
+          <th>Impacto (kg CO₂e)</th>
+        </tr>
+      </thead>
+      <tbody id="corpo-tabela">
+        <!-- Linhas adicionadas via script -->
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EcoGestão</p>
+  </footer>
+
+  <script>
+    let dadosHistorico = JSON.parse(localStorage.getItem("historicoEcoGestao")) || [];
+    const corpoTabela = document.getElementById("corpo-tabela");
+
+    function preencherTabela(dados) {
+      corpoTabela.innerHTML = "";
+      dados.forEach((dado, index) => {
+        const linha = document.createElement("tr");
+        linha.innerHTML = `
+          <td contenteditable onblur="atualizarCampo(${index}, 'data', this.innerText)">${dado.data}</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'entrada', this.innerText)">R$ ${dado.entrada}</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'despesas', this.innerText)">R$ ${dado.despesas}</td>
+          <td>R$ ${(dado.entrada - dado.despesas).toFixed(2)}</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'desperdicio', this.innerText)">${dado.desperdicio}%</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'agua', this.innerText)">${dado.agua}</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'energia', this.innerText)">${dado.energia}</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'residuos', this.innerText)">${dado.residuos}</td>
+          <td contenteditable onblur="atualizarCampo(${index}, 'impacto', this.innerText)">${dado.impacto}</td>
+        `;
+        corpoTabela.appendChild(linha);
+      });
+    }
+
+    function atualizarCampo(index, campo, valor) {
+      const limpar = (str) => parseFloat(str.replace(/[R$,%\s]/g, "")) || 0;
+      if (campo === 'entrada' || campo === 'despesas' || campo === 'agua' || campo === 'energia' || campo === 'residuos' || campo === 'impacto') {
+        dadosHistorico[index][campo] = limpar(valor);
+      } else {
+        dadosHistorico[index][campo] = valor;
+      }
+      localStorage.setItem("historicoEcoGestao", JSON.stringify(dadosHistorico));
+      preencherTabela(dadosHistorico);
+    }
+
+    function exportarCSV() {
+      let csv = "Data,Entrada,Despesas,Lucro,Desperdício,Água,Energia,Resíduos,Impacto\n";
+      dadosHistorico.forEach(d => {
+        const lucro = (d.entrada - d.despesas).toFixed(2);
+        csv += `${d.data},${d.entrada},${d.despesas},${lucro},${d.desperdicio},${d.agua},${d.energia},${d.residuos},${d.impacto}\n`;
+      });
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "relatorio_ecogestao.csv";
+      link.click();
+    }
+
+    function filtrarDados() {
+      const filtro = document.getElementById("filtroData").value;
+      if (!filtro) return preencherTabela(dadosHistorico);
+      const dadosFiltrados = dadosHistorico.filter(d => d.data.startsWith(filtro));
+      preencherTabela(dadosFiltrados);
+    }
+
+    preencherTabela(dadosHistorico);
+  </script>
+</body>
+</html>
